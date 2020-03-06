@@ -9,14 +9,15 @@
 var button = document.createElement("button");
 button.innerHTML = "Login with Facebook";
 
-var body = document.getElementsByTagName("body")[0];
+var body = document.getElementsByTagName("body")[1];
 body.appendChild(button);
 
 var button2 = document.createElement("button");
 button.innerHTML = "Login with Google";
 
-var body = document.getElementsByTagName("body")[1];
+var body = document.getElementsByTagName("body")[2];
 body.appendChild(button2);
+	    
 button.addEventListener ("click", function() {
 if (!document.location.href.includes('access_token')) {
 	
