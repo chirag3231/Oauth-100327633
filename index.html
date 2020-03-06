@@ -4,13 +4,20 @@
   </head>
   <body>
     <h1>Basic OAuth example using implicit flow</h1>
+	  <div class="buttons">
 	  <button type="button" onclick="myFunction()"> Login with Facebook </button>
 	  <button type="button" onclick="myFunction_google()"> Login with Google </button>
+	  </div>
  <script>
 
       function myFunction()
 	 {
-	 
+	 var x = document.getElementById("buttons");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
       if (!document.location.href.includes('access_token')) {
 	  //
 	  // Many apps would display a "Login" button to alert users that
