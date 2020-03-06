@@ -6,19 +6,8 @@
     <h1>Basic OAuth example using implicit flow</h1>
 
     <script>
-var button = document.createElement("button");
-button.innerHTML = "Login with Facebook";
 
-var body = document.getElementsByTagName("body")[1];
-body.appendChild(button);
 
-var button = document.createElement("button");
-button.innerHTML = "Login with Google";
-
-var body = document.getElementsByTagName("body")[2];
-body.appendChild(button2);
-	    
-button.addEventListener ("click", function() {
 if (!document.location.href.includes('access_token')) {
 	
 	  let client_id = '497027567887055';
@@ -58,13 +47,14 @@ if (!document.location.href.includes('access_token')) {
 	  document.body.append(userpic);
       });
  
-});
+
      
       
       
       
     </script>
-    
+    <button type="button" onclick="funct1" id="1">Login with Facebook</button>
+<button type="button" onclick="funct2" id="2">Login with Google</button>
     
   </body>
 </html>
