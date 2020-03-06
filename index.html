@@ -12,12 +12,7 @@
 
       function myFunction()
 	 {
-	 var x = document.getElementById("buttons");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
+	
       if (!document.location.href.includes('access_token')) {
 	  //
 	  // Many apps would display a "Login" button to alert users that
@@ -92,8 +87,14 @@
 	  userpic.src = myJson.picture.data.url;
 	  document.body.append(userpic);
       });
-      
-	 }
+		 
+       var x = document.getElementById("buttons");
+  	if (x.style.display === "none") {
+   	 x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+	 
     </script>
 
    
