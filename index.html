@@ -85,26 +85,23 @@
 
 }
 }).then(function(response) {
-// Extra error check, if we get an invalid response, it means that
-// our token is invalid. We will restart the login flow by
-// clearing the access_token
+	  
+	  console.log(response);
+	  if (response.status != 200) {
+	      document.location.href = app_url;
+	      token = null;
+	  }
+	  return response.json();
+      }).then(function(myJson) {
+	  
+	  console.log(myJson);
+	      let userinfo = document.createElement('h2');
+	  userinfo.innerText = `Hello ${myJson.name}`;
+	  document.body.append(userinfo);
 
-console.log(response);
-if (response.status != 200) {
-document.location.href = app_url;
-token = null;
-}
-return response.json();
-}).then(function(myJson) {
-
-console.log(myJson);
-let userinfo = document.createElement('h2');
-userinfo.innerText = `Hello ${myJson.name}`;
-document.body.append(userinfo);
-
-let userpic = document.createElement('img');
-userpic.src = myJson.picture;
-document.body.append(userpic);
+	  let userpic = document.createElement('img');
+	  userpic.src = myJson.picture.data.url;
+	      document.body.append(userpic);	 
 	 
        
 	
