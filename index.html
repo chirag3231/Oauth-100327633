@@ -79,32 +79,33 @@
       var app_url = matches[1];
       var token = matches[2];
 
-      fetch('https://accounts.google.com/o/oauth2/v2/auth?fields=response_type+name+email+picture', {
-	  
-	  headers:{
-	      "Authorization": `Bearer ${token}`
-		  
-	  }
-      }).then(function(response) {
-	  // Extra error check, if we get an invalid response, it means that
-	  // our token is invalid.  We will restart the login flow by
-	  // clearing the access_token
-	  console.log(response);
-	  if (response.status != 200) {
-	      document.location.href = app_url;
-	      token = null;
-	  }
-	  return response.json();
-      }).then(function(myJson) {
-	
-	  console.log(myJson);
-	      let userinfo = document.createElement('h2');
-	  userinfo.innerText = `Hello ${myJson.name}`;
-	  document.body.append(userinfo);
+      fetch('https://www.googleapis.com/oauth2/v2/userinfo {
+	headers:{
+"Authorization": `Bearer ${token}`
 
-	  let userpic = document.createElement('img');
-	  userpic.src = myJson.picture.data.url;
-	      document.body.append(userpic);	 
+}
+}).then(function(response) {
+// Extra error check, if we get an invalid response, it means that
+// our token is invalid. We will restart the login flow by
+// clearing the access_token
+
+console.log(response);
+if (response.status != 200) {
+document.location.href = app_url;
+token = null;
+}
+return response.json();
+}).then(function(myJson) {
+
+console.log(myJson);
+let userinfo = document.createElement('h2');
+userinfo.innerText = `Hello ${myJson.name}`;
+document.body.append(userinfo);
+
+let userpic = document.createElement('img');
+userpic.src = myJson.picture;
+document.body.append(userpic);
+	 
        
 	
       });
